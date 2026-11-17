@@ -1,0 +1,115 @@
+{
+  "label": "Original project / Tableau results",
+  "workbook_filename": "Airline_Passenger_Satisfaction_Final.twbx",
+  "workbook_sha256": "a24312e8fac3cf56f8dc176e896ca0a062a7dc064bf0f7e8bff2c772180aa837",
+  "definition_sha256": "ec909edadd624c376ef94aceb6c87de30012ca25b82825cb8dd2befe87f40072",
+  "extract_member": "Data/TableauTemp 1/#TableauTemp_0qu6vkb04ielwj18rkaka1gemql5.hyper",
+  "extract_sha256": "1f97345a82ffc1ba22aef0e2a72b01a11f141d637e1296f54536bfdcbe9a312c",
+  "records_sha256": "54884e188927fe174e1e7b6485e2b75debf03aa9f7e6bd0e78e619d16a73aace",
+  "source_files": [
+    "DecisionTree_Predictions.csv",
+    "KNN_Predictions.csv",
+    "NaiveBayes_Predictions.csv"
+  ],
+  "total_records": 77928,
+  "label_mapping": {
+    "0": "Dissatisfied",
+    "1": "Satisfied"
+  },
+  "metric_definition": "Positive class = Satisfied (1); confusion rows actual, columns predicted, order [0,1].",
+  "missing_actual": 0,
+  "missing_predicted": 0,
+  "models": [
+    {
+      "model": "KNN",
+      "records": 25976,
+      "accuracy": 0.9410609793655682,
+      "precision": 0.9415225853172807,
+      "recall": 0.9215842636895268,
+      "f1": 0.9314467380110151,
+      "precision_dissatisfied": 0.9407194051845401,
+      "recall_dissatisfied": 0.9560245064669843,
+      "actual_satisfaction_rate": 0.4344779796735448,
+      "predicted_satisfaction_rate": 0.425277178934401,
+      "confusion_matrix": [
+        [
+          14044,
+          646
+        ],
+        [
+          885,
+          10401
+        ]
+      ]
+    },
+    {
+      "model": "Decision Tree",
+      "records": 25976,
+      "accuracy": 0.9318986757006468,
+      "precision": 0.9230906019382946,
+      "recall": 0.9199007620060252,
+      "f1": 0.9214929214929215,
+      "precision_dissatisfied": 0.9386244823138027,
+      "recall_dissatisfied": 0.9411164057181757,
+      "actual_satisfaction_rate": 0.4344779796735448,
+      "predicted_satisfaction_rate": 0.4329765937788728,
+      "confusion_matrix": [
+        [
+          13825,
+          865
+        ],
+        [
+          904,
+          10382
+        ]
+      ]
+    },
+    {
+      "model": "Naive Bayes",
+      "records": 25976,
+      "accuracy": 0.8790036957191254,
+      "precision": 0.8773051617088314,
+      "recall": 0.8388268651426546,
+      "f1": 0.8576346423880056,
+      "precision_dissatisfied": 0.8802107342772473,
+      "recall_dissatisfied": 0.9098706603131382,
+      "actual_satisfaction_rate": 0.4344779796735448,
+      "predicted_satisfaction_rate": 0.41542192793347704,
+      "confusion_matrix": [
+        [
+          13366,
+          1324
+        ],
+        [
+          1819,
+          9467
+        ]
+      ]
+    }
+  ],
+  "workbook_calculations": {
+    "Correct Prediction": "IF [prediction(satisfaction)] = [satisfaction] THEN 1\r\nELSE 0\r\nEND",
+    "Accuracy": "AVG([Calculation_1542405978206208])",
+    "Precision (Satisfied)": "SUM(\r\n    IF [prediction(satisfaction)] = TRUE\r\n       AND [satisfaction] = TRUE\r\n    THEN 1 ELSE 0 END\r\n)\r\n/\r\nSUM(\r\n    IF [prediction(satisfaction)] = TRUE\r\n    THEN 1 ELSE 0 END\r\n)",
+    "Recall (Satisfied)": "SUM(\r\n    IF [prediction(satisfaction)] = TRUE\r\n       AND [satisfaction] = TRUE\r\n    THEN 1 ELSE 0 END\r\n)\r\n/\r\nSUM(\r\n    IF [satisfaction] = TRUE\r\n    THEN 1 ELSE 0 END\r\n)",
+    "F1-Score (Satisfied)": "2 * [Calculation_1542405983006722] * [Calculation_1542405983268867]\r\n/\r\n([Calculation_1542405983006722] + [Calculation_1542405983268867])",
+    "Recall (Dissatisfied)": "SUM(\r\n    IF [prediction(satisfaction)] = FALSE\r\n       AND [satisfaction] = FALSE\r\n    THEN 1 ELSE 0 END\r\n)\r\n/\r\nSUM(\r\n    IF [satisfaction] = FALSE\r\n    THEN 1 ELSE 0 END\r\n)",
+    "Precision (Dissatisfied)": "SUM(\r\n    IF [prediction(satisfaction)] = FALSE\r\n       AND [satisfaction] = FALSE\r\n    THEN 1 ELSE 0 END\r\n)\r\n/\r\nSUM(\r\n    IF [prediction(satisfaction)] = FALSE\r\n    THEN 1 ELSE 0 END\r\n)",
+    "Actual Satisfaction Rate": "AVG(IF [satisfaction] THEN 1 ELSE 0 END)",
+    "Predicted Satisfaction Rate": "AVG(IF [prediction(satisfaction)] THEN 1 ELSE 0 END)"
+  },
+  "selector_filters": {
+    "Confusion Matrix": [
+      "[federated.090wvpl01zx65010u8ec01sm0zki].[none:Table Name:nk]"
+    ],
+    "Model Accuracy Comparison": [],
+    "Model KPIs": [
+      "[federated.090wvpl01zx65010u8ec01sm0zki].[none:Table Name:nk]"
+    ]
+  },
+  "limitations": [
+    "Exported prediction records do not contain passenger IDs or source-row IDs.",
+    "Training workflow, fitted estimators and preprocessing artifacts are not packaged in this workbook.",
+    "These records evaluate the original exported predictions, not the website prediction model."
+  ]
+}

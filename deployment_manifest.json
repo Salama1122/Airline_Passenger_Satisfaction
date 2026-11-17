@@ -1,0 +1,21 @@
+{
+  "files_sha256": {
+    "app.py": "54af59b5432791053838e8cfa520e4c7d2d4ba76ced27d380956c4080eb8d8da",
+    "airline.py": "8c89282717753b22547a2b7dbc494b5f7b8e333feb90f28e2b0205e71c2a95c1",
+    "dashboard.py": "6dc950275c0eee33cf51cdf89c160006619259abc2ecc305890e50a7af9acbd6",
+    "tableau_page.py": "2fdc2bee8b934a54bfea5230bde60bbf5cb70e7e9f3d60adaefc7cbbe270de5d",
+    "tableau_results.py": "68c62135d82c2d01e0d9b54143404c8fd65730d8f46e0fe6bba08eb00cb1e66b",
+    "data/Airline_Passenger_Cleaned.csv": "0ba610647ae8df4587b1c6bf9f9b41b2f861cb05e2495628a38284d7828f6071",
+    "data/tableau/verified_predictions.csv": "54884e188927fe174e1e7b6485e2b75debf03aa9f7e6bd0e78e619d16a73aace",
+    "artifacts/best_pipeline.joblib": "466b842e7996844fc7f7118502ccb3aa64c0b6fa38ea407cbf9f19ff3f3eb6b6",
+    "artifacts/report.json": "97cc9f51a75595b838c9a39b323143b9e7be47b8b32311496f04590be45ca946",
+    "artifacts/tableau_report.json": "a13085e9b33e76443049163ed18ce49d8f72249c9279dcb5679544ee810c3de0"
+  },
+  "python": "3.13",
+  "entrypoint": "app.py",
+  "hosting_changes": [
+    "Bind to 0.0.0.0 in this checkout only.",
+    "Install pinned runtime dependencies only."
+  ],
+  "source_changes": "None: website source, dataset and model files copied byte-for-byte."
+}
